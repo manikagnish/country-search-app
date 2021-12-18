@@ -7,6 +7,7 @@ import Home from './pages/Home';
 function App() {
   const { dark } = useContext(GlobalContext);
   const [darkMode] = dark;
+
   return (
     <div
       className={

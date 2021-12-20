@@ -5,3 +5,7 @@
 body {
   overflow-x: hidden;
 }
+
+.padding-x {
+  @apply px-4 md:px-12 lg:px-16 xl:px-20;
+}

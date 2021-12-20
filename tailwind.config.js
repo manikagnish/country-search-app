@@ -24,6 +24,10 @@ module.exports = {
       fontFamily: {
         nunito: '"Nunito Sans", "sans-serif"',
       },
+
+      margin: {
+        '10vw': '10vw',
+      },
     },
   },
   darkMode: 'class',

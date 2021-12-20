@@ -21,17 +21,15 @@ export default function Home() {
   console.log(response);
 
   return (
-    <div>
-      <div className="flex flex-col sm:flex-row p-8 sm:p-12 justify-between">
+    <div className="pb-10">
+      <div className="flex flex-col sm:flex-row py-8 sm:py-12 padding-x justify-between mx-auto">
         <SearchBar />
         <Dropdown />
       </div>
 
-      <p>{response.data ? response.data[0].name : ''}</p>
-
-      <ul className="container grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+      <ul className="container grid gap-12 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 padding-x mx-auto">
         {response.data
-          ? response.data.slice(0, 9).map(country => (
+          ? response.data.slice(0, 8).map(country => (
               <li key={country.numericCode}>
                 <CountryCard data={country} />
               </li>

@@ -7,19 +7,19 @@ import axios from 'axios';
 export default function Home() {
   const [response, setResponse] = useState([]);
   const [searchCountry, setSearchCountry] = useState('');
-  const [continent, setContinent] = useState('europe');
+  const [continent, setContinent] = useState('');
 
-  // useEffect(() => {
-  //   async function getUser() {
-  //     try {
-  //       const response = await axios.get('https://restcountries.com/v2/all');
-  //       setResponse(response);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   }
-  //   getUser();
-  // }, []);
+  useEffect(() => {
+    async function getUser() {
+      try {
+        const response = await axios.get('https://restcountries.com/v2/all');
+        setResponse(response);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getUser();
+  }, []);
 
   useEffect(() => {
     async function byContinent() {
@@ -27,7 +27,6 @@ export default function Home() {
         const response = await axios.get(
           `https://restcountries.com/v3.1/region/${continent}`
         );
-        console.log(response);
         setResponse(response);
       } catch (error) {
         console.error(error);
@@ -50,19 +49,27 @@ export default function Home() {
         {response.data
           ? response.data
               .filter(val => {
-                if (
-                  val.name.common
-                    .toLowerCase()
-                    .includes(searchCountry.toLowerCase())
-                ) {
+                if (searchCountry === '') {
                   return val;
+                } else if (continent === '') {
+                  if (
+                    val.name.toLowerCase().includes(searchCountry.toLowerCase())
+                  ) {
+                    return val;
+                  }
+                } else if (continent !== '') {
+                  if (
+                    val.name.common
+                      .toLowerCase()
+                      .includes(searchCountry.toLowerCase())
+                  ) {
+                    return val;
+                  }
                 }
-
-                return val;
               })
               .slice(0, 8)
               .map(country => (
-                <li key={country.name.common}>
+                <li key={country.name.common || country.name}>
                   <CountryCard data={country} />
                 </li>
               ))

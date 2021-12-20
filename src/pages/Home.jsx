@@ -6,6 +6,8 @@ import axios from 'axios';
 
 export default function Home() {
   const [response, setResponse] = useState([]);
+  const [searchCountry, setSearchCountry] = useState('');
+
   useEffect(() => {
     async function getUser() {
       try {
@@ -23,17 +25,31 @@ export default function Home() {
   return (
     <div className="pb-10">
       <div className="flex flex-col sm:flex-row py-8 sm:py-12 padding-x justify-between mx-auto">
-        <SearchBar />
+        <SearchBar
+          searchCountry={searchCountry}
+          setSearchCountry={setSearchCountry}
+        />
         <Dropdown />
       </div>
 
       <ul className="container grid gap-12 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 padding-x mx-auto">
         {response.data
-          ? response.data.slice(0, 8).map(country => (
-              <li key={country.numericCode}>
-                <CountryCard data={country} />
-              </li>
-            ))
+          ? response.data
+              .filter(val => {
+                if (searchCountry === '') {
+                  return val;
+                } else if (
+                  val.name.toLowerCase().includes(searchCountry.toLowerCase())
+                ) {
+                  return val;
+                }
+              })
+              .slice(0, 8)
+              .map(country => (
+                <li key={country.numericCode}>
+                  <CountryCard data={country} />
+                </li>
+              ))
           : ''}
       </ul>
     </div>

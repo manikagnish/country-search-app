@@ -1,14 +1,12 @@
 import { useEffect, useContext } from 'react';
 import { GlobalContext } from '../context/GlobalContext';
-import SearchBar from '../components/SearchBar';
-import Dropdown from '../components/Dropdown';
 import CountryCard from '../components/CountryCard';
 import axios from 'axios';
 
 export default function Home() {
-  const { res, country, region, details } = useContext(GlobalContext);
+  const { resRegion, country, region, details } = useContext(GlobalContext);
 
-  const [response, setResponse] = res;
+  const [responseRegion, setResponseRegion] = resRegion;
   const [searchCountry, setSearchCountry] = country;
   const [continent, setContinent] = region;
   const [detail, setDetail] = details;
@@ -19,7 +17,7 @@ export default function Home() {
         const response = await axios.get(
           `https://restcountries.com/v3.1/region/${continent}`
         );
-        setResponse(response);
+        setResponseRegion(response);
       } catch (error) {
         console.error(error);
       }
@@ -30,8 +28,8 @@ export default function Home() {
   return (
     <div className="pb-10">
       <ul className="container grid gap-12 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 padding-x mx-auto">
-        {response.data
-          ? response.data
+        {responseRegion.data
+          ? responseRegion.data
               .filter(val => {
                 if (searchCountry === '') {
                   return val;
@@ -42,15 +40,17 @@ export default function Home() {
                 }
               })
               .slice(0, 8)
-              .map(country => (
-                <li key={country.name.common}>
-                  <CountryCard
-                    data={country}
-                    setDetail={setDetail}
-                    continent={continent}
-                  />
-                </li>
-              ))
+              .map(country => {
+                return (
+                  <li key={country.name.common}>
+                    <CountryCard
+                      data={country}
+                      setDetail={setDetail}
+                      continent={continent}
+                    />
+                  </li>
+                );
+              })
           : ''}
       </ul>
     </div>

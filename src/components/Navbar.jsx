@@ -11,7 +11,7 @@ export default function Navbar() {
       className="flex justify-between items-center w-screen py-6 padding-x
     bg-white dark:bg-blue shadow-md"
     >
-      <Link to="/">
+      <Link to="/home">
         <h1 className="font-bold text-lg md:text-xl">Where in the world?</h1>
       </Link>
       <button

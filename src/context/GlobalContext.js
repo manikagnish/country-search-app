@@ -5,6 +5,7 @@ export const GlobalContext = createContext();
 export const GlobalProvider = props => {
   const [darkMode, setDarkMode] = useState(false);
   const [response, setResponse] = useState([]);
+  const [responseRegion, setResponseRegion] = useState([]);
   const [searchCountry, setSearchCountry] = useState('');
   const [continent, setContinent] = useState('');
   const [detail, setDetail] = useState('india');
@@ -16,6 +17,7 @@ export const GlobalProvider = props => {
       value={{
         dark: [darkMode, setDarkMode],
         res: [response, setResponse],
+        resRegion: [responseRegion, setResponseRegion],
         country: [searchCountry, setSearchCountry],
         region: [continent, setContinent],
         details: [detail, setDetail],

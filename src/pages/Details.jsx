@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 export default function Details() {
-  const { details, countryDetails, searchShow, country } =
+  const { details, countryDetails, searchShow, country, region } =
     useContext(GlobalContext);
   const [detail, setDetail] = details;
   const [countryDetail, setCountryDetail] = countryDetails;
   const [showSearch, setShowSearch] = searchShow;
-
-  const [_, setSearchCountry] = country;
+  const [continent, setContinent] = region;
+  const [searchCountry, setSearchCountry] = country;
 
   useEffect(() => {
     async function getCountryDetails() {
@@ -19,7 +19,6 @@ export default function Details() {
         `https://restcountries.com/v2/name/${detail}`
       );
       setCountryDetail(res.data[0]);
-      console.log(res.data[0]);
     }
     getCountryDetails();
   }, [detail]);
@@ -32,8 +31,8 @@ export default function Details() {
             className="rounded shadow-md mx-2 bg-white dark:bg-blue py-1 px-8 opacity-80 font-normal"
             onClick={() => {
               setShowSearch(true);
-
               setSearchCountry('');
+              setContinent('');
             }}
           >
             &#8592; Back

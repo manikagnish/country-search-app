@@ -32,6 +32,7 @@ function App() {
         )}
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="home" element={<Home />} />
           <Route path="/regions" element={<Regions />} />
           <Route path="/details" element={<Details />} />
         </Routes>

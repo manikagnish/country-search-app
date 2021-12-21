@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { GlobalContext } from './context/GlobalContext';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -17,9 +18,13 @@ function App() {
           : 'font-nunito bg-lightGray text-darkBlueLightMode min-h-screen'
       }
     >
-      <Navbar />
-      <Details />
-      <Home />
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/details" element={<Details />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

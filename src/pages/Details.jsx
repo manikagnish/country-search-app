@@ -1,5 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { GlobalContext } from '../context/GlobalContext';
+import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 
@@ -10,7 +11,9 @@ export default function Details() {
 
   useEffect(() => {
     async function getCountryDetails() {
-      const res = await axios.get(`https://restcountries.com/v2/name/belgium`);
+      const res = await axios.get(
+        `https://restcountries.com/v2/name/${detail}`
+      );
       setCountryDetail(res.data[0]);
       console.log(res.data[0]);
     }
@@ -20,9 +23,11 @@ export default function Details() {
   return (
     <>
       <div className="padding-x mt-8">
-        <button className="rounded shadow-md mx-2 bg-white dark:bg-blue py-1 px-8 opacity-80 font-normal">
-          &#8592; Back
-        </button>
+        <Link to="/">
+          <button className="rounded shadow-md mx-2 bg-white dark:bg-blue py-1 px-8 opacity-80 font-normal">
+            &#8592; Back
+          </button>
+        </Link>
       </div>
       <div className="grid grid-cols-1 md:flex w-full padding-x my-10 items-center justify-items-center">
         {countryDetail ? (
@@ -109,11 +114,12 @@ export default function Details() {
               <div className="font-semibold  md:col-span-2">
                 <div>
                   Border Countries:{' '}
-                  {countryDetail.borders.map(border => (
-                    <button className="rounded shadow-md m-2 bg-white dark:bg-blue py-1 px-8">
-                      {border}
-                    </button>
-                  ))}
+                  {countryDetail.borders &&
+                    countryDetail.borders.map(border => (
+                      <button className="cursor-default rounded shadow-md m-2 bg-white dark:bg-blue py-1 px-8">
+                        {border}
+                      </button>
+                    ))}
                 </div>
               </div>
             </div>

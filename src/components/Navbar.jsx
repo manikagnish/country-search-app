@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalContext';
 import { HiOutlineMoon, HiOutlineSun } from 'react-icons/hi';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const { dark } = useContext(GlobalContext);
@@ -10,7 +11,9 @@ export default function Navbar() {
       className="flex justify-between items-center w-screen py-6 padding-x
     bg-white dark:bg-blue shadow-md"
     >
-      <h1 className="font-bold text-lg md:text-xl">Where in the world?</h1>
+      <Link to="/">
+        <h1 className="font-bold text-lg md:text-xl">Where in the world?</h1>
+      </Link>
       <button
         onClick={() => {
           setDarkMode(!darkMode);

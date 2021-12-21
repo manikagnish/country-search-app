@@ -12,7 +12,7 @@ export default function Dropdown() {
         Filter by Region
       </summary>
       <ul className="bg-white text-darkBlueLightMode dark:bg-blue dark:text-white w-40 p-4 rounded-sm mt-1 shadow-md absolute">
-        <Link to="regions">
+        <Link to="/country-search-app/regions">
           <li
             className="p-1 hover:text-cyan-500 transition cursor-pointer"
             onClick={() => {
@@ -23,7 +23,7 @@ export default function Dropdown() {
           </li>
         </Link>
 
-        <Link to="regions">
+        <Link to="/country-search-app/regions">
           <li
             className="p-1 hover:text-cyan-500 transition cursor-pointer"
             onClick={() => {
@@ -33,7 +33,7 @@ export default function Dropdown() {
             America
           </li>
         </Link>
-        <Link to="regions">
+        <Link to="/country-search-app/regions">
           <li
             className="p-1 hover:text-cyan-500 transition cursor-pointer"
             onClick={() => {
@@ -43,7 +43,7 @@ export default function Dropdown() {
             Asia
           </li>
         </Link>
-        <Link to="regions">
+        <Link to="/country-search-app/regions">
           <li
             className="p-1 hover:text-cyan-500 transition cursor-pointer"
             onClick={() => {
@@ -53,7 +53,7 @@ export default function Dropdown() {
             Europe
           </li>
         </Link>
-        <Link to="regions">
+        <Link to="/country-search-app/regions">
           <li
             className="p-1 hover:text-cyan-500 transition cursor-pointer"
             onClick={() => {

@@ -26,7 +26,7 @@ export default function Details() {
   return (
     <>
       <div className="padding-x mt-8">
-        <Link to="/">
+        <Link to="/country-search-app">
           <button
             className="rounded shadow-md mx-2 bg-white dark:bg-blue py-1 px-8 opacity-80 font-normal"
             onClick={() => {

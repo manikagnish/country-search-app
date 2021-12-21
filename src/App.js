@@ -31,10 +31,10 @@ function App() {
           </div>
         )}
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="home" element={<Home />} />
-          <Route path="/regions" element={<Regions />} />
-          <Route path="/details" element={<Details />} />
+          <Route path="/country-search-app" element={<Home />} />
+          <Route path="/country-search-app/home" element={<Home />} />
+          <Route path="/country-search-app/regions" element={<Regions />} />
+          <Route path="/country-search-app/details" element={<Details />} />
         </Routes>
       </Router>
     </div>

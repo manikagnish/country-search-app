@@ -9,7 +9,7 @@ export default function CountryCard({ data }) {
   const [showSearch, setShowSearch] = searchShow;
 
   return (
-    <Link to="/details">
+    <Link to="/country-search-app/details">
       <div
         className="rounded-md overflow-hidden shadow-md mx-10vw sm:mx-0 cursor-pointer"
         onClick={() => {

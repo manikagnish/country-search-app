@@ -30,7 +30,7 @@ export default function Details() {
             <img
               src={countryDetail.flags.png}
               alt={countryDetail.name}
-              className="w-full md:w-1/3 px-10vw"
+              className="w-full md:w-1/3 px-10vw md:px-0"
             />
             <div className="py-12 px-10vw md:p-12 md:pl-20 w-full md:w-2/3 grid grid-rows-2 grid-cols-1 md:grid-cols-2 items-center">
               <div className="">

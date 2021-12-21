@@ -1,16 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { GlobalContext } from '../context/GlobalContext';
 import SearchBar from '../components/SearchBar';
 import Dropdown from '../components/Dropdown';
 import CountryCard from '../components/CountryCard';
 import axios from 'axios';
 
 export default function Home() {
-  const [response, setResponse] = useState([]);
-  const [searchCountry, setSearchCountry] = useState('');
-  const [continent, setContinent] = useState('');
+  const { res, country, region, details } = useContext(GlobalContext);
+
+  const [response, setResponse] = res;
+  const [searchCountry, setSearchCountry] = country;
+  const [continent, setContinent] = region;
+  const [detail, setDetail] = details;
 
   useEffect(() => {
-    async function getUser() {
+    async function getCountry() {
       try {
         const response = await axios.get('https://restcountries.com/v2/all');
         setResponse(response);
@@ -18,7 +22,7 @@ export default function Home() {
         console.error(error);
       }
     }
-    getUser();
+    getCountry();
   }, []);
 
   useEffect(() => {
@@ -38,12 +42,11 @@ export default function Home() {
   return (
     <div className="pb-10">
       <div className="flex flex-col sm:flex-row py-8 sm:py-12 padding-x justify-between mx-auto">
-        <SearchBar
-          searchCountry={searchCountry}
-          setSearchCountry={setSearchCountry}
-        />
+        <SearchBar />
         <Dropdown continent={continent} setContinent={setContinent} />
       </div>
+
+      <h1 className="m-12 font-bold">{detail}</h1>
 
       <ul className="container grid gap-12 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 padding-x mx-auto">
         {response.data
@@ -70,7 +73,11 @@ export default function Home() {
               .slice(0, 8)
               .map(country => (
                 <li key={country.name.common || country.name}>
-                  <CountryCard data={country} />
+                  <CountryCard
+                    data={country}
+                    setDetail={setDetail}
+                    continent={continent}
+                  />
                 </li>
               ))
           : ''}

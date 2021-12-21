@@ -1,4 +1,9 @@
-export default function SearchBar({ searchCountry, setSearchCountry }) {
+import { useContext } from 'react';
+import { GlobalContext } from '../context/GlobalContext';
+
+export default function SearchBar() {
+  const { country } = useContext(GlobalContext);
+  const [_, setSearchCountry] = country;
   return (
     <form>
       <input

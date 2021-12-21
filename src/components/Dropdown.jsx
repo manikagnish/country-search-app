@@ -1,4 +1,10 @@
-export default function Dropdown({ continent, setContinent }) {
+import { useContext } from 'react';
+import { GlobalContext } from '../context/GlobalContext';
+
+export default function Dropdown() {
+  const { region } = useContext(GlobalContext);
+  const [_, setContinent] = region;
+
   return (
     <details className="relative">
       <summary className="bg-white text-darkBlueLightMode dark:bg-blue dark:text-white w-40 p-4 rounded-sm cursor-pointer shadow-md">

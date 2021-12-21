@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { GlobalContext } from '../context/GlobalContext';
 import SearchBar from '../components/SearchBar';
 import Dropdown from '../components/Dropdown';
@@ -6,23 +6,12 @@ import CountryCard from '../components/CountryCard';
 import axios from 'axios';
 
 export default function Home() {
-  const { res, country, region } = useContext(GlobalContext);
+  const { res, country, region, details } = useContext(GlobalContext);
 
   const [response, setResponse] = res;
   const [searchCountry, setSearchCountry] = country;
   const [continent, setContinent] = region;
-
-  useEffect(() => {
-    async function getCountry() {
-      try {
-        const response = await axios.get('https://restcountries.com/v2/all');
-        setResponse(response);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    getCountry();
-  }, []);
+  const [detail, setDetail] = details;
 
   useEffect(() => {
     async function byContinent() {
@@ -45,18 +34,21 @@ export default function Home() {
           ? response.data
               .filter(val => {
                 if (searchCountry === '') {
-                  console.log(searchCountry);
                   return val;
                 } else {
-                  return val.name
+                  return val.name.common
                     .toLowerCase()
                     .includes(searchCountry.toLowerCase());
                 }
               })
               .slice(0, 8)
               .map(country => (
-                <li key={country.name}>
-                  <CountryCard data={country} />
+                <li key={country.name.common}>
+                  <CountryCard
+                    data={country}
+                    setDetail={setDetail}
+                    continent={continent}
+                  />
                 </li>
               ))
           : ''}

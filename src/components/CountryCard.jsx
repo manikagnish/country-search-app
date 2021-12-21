@@ -3,21 +3,22 @@ import { GlobalContext } from '../context/GlobalContext';
 import { Link } from 'react-router-dom';
 
 export default function CountryCard({ data }) {
-  const { details, region } = useContext(GlobalContext);
+  const { details, region, searchShow } = useContext(GlobalContext);
   const [_, setDetail] = details;
   const [continent, setContinent] = region;
+  const [showSearch, setShowSearch] = searchShow;
 
   return (
-    <Link to="details">
+    <Link to="/details">
       <div
         className="rounded-md overflow-hidden shadow-md mx-10vw sm:mx-0 cursor-pointer"
         onClick={() => {
-          console.log(continent);
           if (continent === '') {
-            console.log(data.name);
             setDetail(data.name);
+            setShowSearch(false);
           } else {
             setDetail(data.name.common);
+            setShowSearch(false);
           }
         }}
       >

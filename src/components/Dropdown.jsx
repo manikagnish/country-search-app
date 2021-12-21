@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalContext';
+import { Link } from 'react-router-dom';
 
 export default function Dropdown() {
   const { region } = useContext(GlobalContext);
@@ -11,46 +12,57 @@ export default function Dropdown() {
         Filter by Region
       </summary>
       <ul className="bg-white text-darkBlueLightMode dark:bg-blue dark:text-white w-40 p-4 rounded-sm mt-1 shadow-md absolute">
-        <li
-          className="p-1 hover:text-cyan-500 transition cursor-pointer"
-          onClick={() => {
-            setContinent('africa');
-          }}
-        >
-          Africa
-        </li>
-        <li
-          className="p-1 hover:text-cyan-500 transition cursor-pointer"
-          onClick={() => {
-            setContinent('america');
-          }}
-        >
-          America
-        </li>
-        <li
-          className="p-1 hover:text-cyan-500 transition cursor-pointer"
-          onClick={() => {
-            setContinent('asia');
-          }}
-        >
-          Asia
-        </li>
-        <li
-          className="p-1 hover:text-cyan-500 transition cursor-pointer"
-          onClick={() => {
-            setContinent('europe');
-          }}
-        >
-          Europe
-        </li>
-        <li
-          className="p-1 hover:text-cyan-500 transition cursor-pointer"
-          onClick={() => {
-            setContinent('oceania');
-          }}
-        >
-          Oceania
-        </li>
+        <Link to="regions">
+          <li
+            className="p-1 hover:text-cyan-500 transition cursor-pointer"
+            onClick={() => {
+              setContinent('africa');
+            }}
+          >
+            Africa
+          </li>
+        </Link>
+
+        <Link to="regions">
+          <li
+            className="p-1 hover:text-cyan-500 transition cursor-pointer"
+            onClick={() => {
+              setContinent('america');
+            }}
+          >
+            America
+          </li>
+        </Link>
+        <Link to="regions">
+          <li
+            className="p-1 hover:text-cyan-500 transition cursor-pointer"
+            onClick={() => {
+              setContinent('asia');
+            }}
+          >
+            Asia
+          </li>
+        </Link>
+        <Link to="regions">
+          <li
+            className="p-1 hover:text-cyan-500 transition cursor-pointer"
+            onClick={() => {
+              setContinent('europe');
+            }}
+          >
+            Europe
+          </li>
+        </Link>
+        <Link to="regions">
+          <li
+            className="p-1 hover:text-cyan-500 transition cursor-pointer"
+            onClick={() => {
+              setContinent('oceania');
+            }}
+          >
+            Oceania
+          </li>
+        </Link>
       </ul>
     </details>
   );

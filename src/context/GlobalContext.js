@@ -9,6 +9,7 @@ export const GlobalProvider = props => {
   const [continent, setContinent] = useState('');
   const [detail, setDetail] = useState('india');
   const [countryDetail, setCountryDetail] = useState('');
+  const [showSearch, setShowSearch] = useState(true);
 
   return (
     <GlobalContext.Provider
@@ -19,6 +20,7 @@ export const GlobalProvider = props => {
         region: [continent, setContinent],
         details: [detail, setDetail],
         countryDetails: [countryDetail, setCountryDetail],
+        searchShow: [showSearch, setShowSearch],
       }}
     >
       {props.children}

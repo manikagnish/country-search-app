@@ -5,9 +5,13 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 export default function Details() {
-  const { details, countryDetails } = useContext(GlobalContext);
+  const { details, countryDetails, searchShow, country } =
+    useContext(GlobalContext);
   const [detail, setDetail] = details;
   const [countryDetail, setCountryDetail] = countryDetails;
+  const [showSearch, setShowSearch] = searchShow;
+
+  const [_, setSearchCountry] = country;
 
   useEffect(() => {
     async function getCountryDetails() {
@@ -24,12 +28,19 @@ export default function Details() {
     <>
       <div className="padding-x mt-8">
         <Link to="/">
-          <button className="rounded shadow-md mx-2 bg-white dark:bg-blue py-1 px-8 opacity-80 font-normal">
+          <button
+            className="rounded shadow-md mx-2 bg-white dark:bg-blue py-1 px-8 opacity-80 font-normal"
+            onClick={() => {
+              setShowSearch(true);
+
+              setSearchCountry('');
+            }}
+          >
             &#8592; Back
           </button>
         </Link>
       </div>
-      <div className="grid grid-cols-1 md:flex w-full padding-x my-10 items-center justify-items-center">
+      <div className="grid grid-cols-1 md:flex w-full padding-x py-10 items-center justify-items-center">
         {countryDetail ? (
           <>
             <img
@@ -114,12 +125,13 @@ export default function Details() {
               <div className="font-semibold  md:col-span-2">
                 <div>
                   Border Countries:{' '}
-                  {countryDetail.borders &&
-                    countryDetail.borders.map(border => (
-                      <button className="cursor-default rounded shadow-md m-2 bg-white dark:bg-blue py-1 px-8">
-                        {border}
-                      </button>
-                    ))}
+                  {countryDetail.borders
+                    ? countryDetail.borders.map(border => (
+                        <button className="cursor-default rounded shadow-md m-2 bg-white dark:bg-blue py-1 px-8">
+                          {border}
+                        </button>
+                      ))
+                    : 'none'}
                 </div>
               </div>
             </div>

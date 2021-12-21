@@ -5,7 +5,7 @@ export default function SearchBar() {
   const { country } = useContext(GlobalContext);
   const [_, setSearchCountry] = country;
   return (
-    <form>
+    <form onSubmit={e => e.preventDefault()}>
       <input
         type="text"
         placeholder="&#128269; Search for a country..."

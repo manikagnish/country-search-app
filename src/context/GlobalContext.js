@@ -7,7 +7,8 @@ export const GlobalProvider = props => {
   const [response, setResponse] = useState([]);
   const [searchCountry, setSearchCountry] = useState('');
   const [continent, setContinent] = useState('');
-  const [detail, setDetail] = useState('hello');
+  const [detail, setDetail] = useState('india');
+  const [countryDetail, setCountryDetail] = useState('');
 
   return (
     <GlobalContext.Provider
@@ -17,6 +18,7 @@ export const GlobalProvider = props => {
         country: [searchCountry, setSearchCountry],
         region: [continent, setContinent],
         details: [detail, setDetail],
+        countryDetails: [countryDetail, setCountryDetail],
       }}
     >
       {props.children}

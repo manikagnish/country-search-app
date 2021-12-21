@@ -28,6 +28,10 @@ module.exports = {
       margin: {
         '10vw': '10vw',
       },
+
+      padding: {
+        '10vw': '10vw',
+      },
     },
   },
   darkMode: 'class',

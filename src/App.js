@@ -3,6 +3,7 @@ import { GlobalContext } from './context/GlobalContext';
 
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
+import Details from './pages/Details';
 
 function App() {
   const { dark } = useContext(GlobalContext);
@@ -17,6 +18,7 @@ function App() {
       }
     >
       <Navbar />
+      <Details />
       <Home />
     </div>
   );

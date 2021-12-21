@@ -46,8 +46,6 @@ export default function Home() {
         <Dropdown continent={continent} setContinent={setContinent} />
       </div>
 
-      <h1 className="m-12 font-bold">{detail}</h1>
-
       <ul className="container grid gap-12 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 padding-x mx-auto">
         {response.data
           ? response.data

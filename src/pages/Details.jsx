@@ -1,8 +1,8 @@
-import { useContext, useEffect } from 'react';
-import { GlobalContext } from '../context/GlobalContext';
-import { Link } from 'react-router-dom';
+import { useContext, useEffect } from "react";
+import { GlobalContext } from "../context/GlobalContext";
+import { Link } from "react-router-dom";
 
-import axios from 'axios';
+import axios from "axios";
 
 export default function Details() {
   const { details, countryDetails, searchShow, country, region } =
@@ -31,8 +31,9 @@ export default function Details() {
             className="rounded shadow-md mx-2 bg-white dark:bg-blue py-1 px-8 opacity-80 font-normal"
             onClick={() => {
               setShowSearch(true);
-              setSearchCountry('');
-              setContinent('');
+              setSearchCountry("");
+              setContinent("");
+              setCountryDetail("");
             }}
           >
             &#8592; Back
@@ -54,31 +55,31 @@ export default function Details() {
                 </h2>
                 <ul className="font-semibold">
                   <li>
-                    Native Name:{' '}
+                    Native Name:{" "}
                     <span className="opacity-80 font-normal">
                       {countryDetail.nativeName}
                     </span>
                   </li>
                   <li>
-                    Population:{' '}
+                    Population:{" "}
                     <span className="opacity-80 font-normal">
                       {countryDetail.population}
                     </span>
                   </li>
                   <li>
-                    Region:{' '}
+                    Region:{" "}
                     <span className="opacity-80 font-normal">
                       {countryDetail.region}
                     </span>
                   </li>
                   <li>
-                    Sub Region:{' '}
+                    Sub Region:{" "}
                     <span className="opacity-80 font-normal">
                       {countryDetail.subregion}
                     </span>
                   </li>
                   <li>
-                    Capital:{' '}
+                    Capital:{" "}
                     <span className="opacity-80 font-normal">
                       {countryDetail.capital}
                     </span>
@@ -89,13 +90,13 @@ export default function Details() {
               <div className="">
                 <ul className="font-semibold">
                   <li>
-                    Top Level Domian:{' '}
+                    Top Level Domian:{" "}
                     <span className="opacity-80 font-normal">
                       {countryDetail.topLevelDomain[0]}
                     </span>
                   </li>
                   <li>
-                    Currencies:{' '}
+                    Currencies:{" "}
                     <span className="opacity-80 font-normal">
                       {countryDetail.currencies.map((currency, index) => {
                         if (index === countryDetail.currencies.length - 1) {
@@ -107,7 +108,7 @@ export default function Details() {
                     </span>
                   </li>
                   <li>
-                    Languages:{' '}
+                    Languages:{" "}
                     <span className="opacity-80 font-normal">
                       {countryDetail.languages.map((language, index) => {
                         if (index === countryDetail.languages.length - 1) {
@@ -123,20 +124,20 @@ export default function Details() {
 
               <div className="font-semibold  md:col-span-2">
                 <div>
-                  Border Countries:{' '}
+                  Border Countries:{" "}
                   {countryDetail.borders
-                    ? countryDetail.borders.map(border => (
+                    ? countryDetail.borders.map((border) => (
                         <button className="cursor-default rounded shadow-md m-2 bg-white dark:bg-blue py-1 px-8">
                           {border}
                         </button>
                       ))
-                    : 'none'}
+                    : "none"}
                 </div>
               </div>
             </div>
           </>
         ) : (
-          ''
+          ""
         )}
       </div>
     </>

@@ -1,15 +1,15 @@
-import { createContext, useState } from 'react';
+import { createContext, useState } from "react";
 
 export const GlobalContext = createContext();
 
-export const GlobalProvider = props => {
+export const GlobalProvider = (props) => {
   const [darkMode, setDarkMode] = useState(false);
   const [response, setResponse] = useState([]);
   const [responseRegion, setResponseRegion] = useState([]);
-  const [searchCountry, setSearchCountry] = useState('');
-  const [continent, setContinent] = useState('');
-  const [detail, setDetail] = useState('india');
-  const [countryDetail, setCountryDetail] = useState('');
+  const [searchCountry, setSearchCountry] = useState("");
+  const [continent, setContinent] = useState("");
+  const [detail, setDetail] = useState("");
+  const [countryDetail, setCountryDetail] = useState("");
   const [showSearch, setShowSearch] = useState(true);
 
   return (

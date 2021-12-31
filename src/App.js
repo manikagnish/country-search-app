@@ -1,13 +1,13 @@
-import { useContext } from 'react';
-import { GlobalContext } from './context/GlobalContext';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useContext } from "react";
+import { GlobalContext } from "./context/GlobalContext";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import Details from './pages/Details';
-import Regions from './pages/Regions';
-import SearchBar from './components/SearchBar';
-import Dropdown from './components/Dropdown';
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Details from "./pages/Details";
+import Regions from "./pages/Regions";
+import SearchBar from "./components/SearchBar";
+import Dropdown from "./components/Dropdown";
 
 function App() {
   const { dark, searchShow } = useContext(GlobalContext);
@@ -18,8 +18,8 @@ function App() {
     <div
       className={
         darkMode
-          ? 'dark font-nunito bg-darkBlue text-white min-h-screen'
-          : 'font-nunito bg-lightGray text-darkBlueLightMode min-h-screen'
+          ? "dark font-nunito bg-darkBlue text-white min-h-screen"
+          : "font-nunito bg-lightGray text-darkBlueLightMode min-h-screen"
       }
     >
       <Router>
@@ -32,7 +32,6 @@ function App() {
         )}
         <Routes>
           <Route path="/country-search-app" element={<Home />} />
-          <Route path="/country-search-app/home" element={<Home />} />
           <Route path="/country-search-app/regions" element={<Regions />} />
           <Route path="/country-search-app/details" element={<Details />} />
         </Routes>

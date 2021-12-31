@@ -1,7 +1,7 @@
-import { useContext } from 'react';
-import { GlobalContext } from '../context/GlobalContext';
-import { HiOutlineMoon, HiOutlineSun } from 'react-icons/hi';
-import { Link } from 'react-router-dom';
+import { useContext } from "react";
+import { GlobalContext } from "../context/GlobalContext";
+import { HiOutlineMoon, HiOutlineSun } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const { dark } = useContext(GlobalContext);
@@ -11,7 +11,7 @@ export default function Navbar() {
       className="flex justify-between items-center w-screen py-6 padding-x
     bg-white dark:bg-blue shadow-md"
     >
-      <Link to="/country-search-app/home">
+      <Link to="/country-search-app/">
         <h1 className="font-bold text-lg md:text-xl">Where in the world?</h1>
       </Link>
       <button
@@ -24,7 +24,7 @@ export default function Navbar() {
           <HiOutlineSun className="mr-1" />
         ) : (
           <HiOutlineMoon className="mr-1" />
-        )}{' '}
+        )}{" "}
         Toggle Theme
       </button>
     </nav>
